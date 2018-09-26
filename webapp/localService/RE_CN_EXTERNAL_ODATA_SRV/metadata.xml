@@ -1,0 +1,382 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="RE_CN_EXTERNAL_ODATA_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="HeaderData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REContractType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Contract Type"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REContractName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Contract name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ContractStartDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Contract Start"
+					sap:sortable="false" sap:filterable="false"/><Property Name="REContractFirstEndDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="1st Contr. End"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ContractEndDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="End of Term" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="REContractTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Contract type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Company Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CityName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CountryName" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="House Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Conditions" Relationship="RE_CN_EXTERNAL_ODATA_SRV.Conditions" FromRole="FromRole_Conditions"
+					ToRole="ToRole_Conditions"/><NavigationProperty Name="Objects" Relationship="RE_CN_EXTERNAL_ODATA_SRV.Objects" FromRole="FromRole_Objects" ToRole="ToRole_Objects"/><NavigationProperty Name="Renewal" Relationship="RE_CN_EXTERNAL_ODATA_SRV.Renewal" FromRole="FromRole_Renewal" ToRole="ToRole_Renewal"/><NavigationProperty Name="Notice" Relationship="RE_CN_EXTERNAL_ODATA_SRV.Notice" FromRole="FromRole_Notice" ToRole="ToRole_Notice"/><NavigationProperty Name="Partner" Relationship="RE_CN_EXTERNAL_ODATA_SRV.Partner" FromRole="FromRole_Partner" ToRole="ToRole_Partner"/></EntityType>
+			<EntityType Name="ContractTypeData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="REContractType"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REContractType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Contract type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IsExternalNumberRange" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Yes/No" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MainRole" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BP Role" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REIsUsersupplier" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Offerer/User"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BuPaValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Partner"/></Key><Property Name="Role" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Business Partner Role"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Roletitle" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Title" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="McCity1" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="PostCode1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="McStreet" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="HouseNum1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="McName1" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 1/Last Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="McName2" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 2/First Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="BuSort1" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Search Term 1"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="BuSort2" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Search Term 2"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="BusinessPartner"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="NoticeRhythmTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="NoticePer"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticePer" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice Per" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticePerName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Notice Per Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PartnerData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/><PropertyRef Name="BusinessPartner"/><PropertyRef Name="BusinessPartnerRole"/><PropertyRef Name="PartnerValidTo"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false"/><Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="BusinessPartner"
+					sap:updatable="false" sap:filterable="false"/><Property Name="BusinessPartnerRole" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BP Role"
+					sap:updatable="false" sap:filterable="false"/><Property Name="BusinessPartnerRoleName" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PartnerValidFrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Start reltnship" sap:updatable="false"/><Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Last Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPartnerName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name 1"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PartnerValidTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="End of relat."
+					sap:updatable="false"/><Property Name="AddressCityName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressStreetName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCountry" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Long name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mainpartner" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Adopt Partner" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NewPartnerValidTo" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="End of relat." sap:creatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CompanyCodeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CompanyCodeName" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Company Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ConditionData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/><PropertyRef Name="REObjectIDCalculation"/><PropertyRef Name="REObjectTypeCalculation"/><PropertyRef Name="REConditionType"/><PropertyRef Name="REConditionExternalPurpose"/><PropertyRef Name="REConditionTypeValidToDate"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REObjectIDCalculation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="ObjID Calc"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REObjectTypeCalculation" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Calc.Obj.Type"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Condition Type"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionTypeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Condition Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionTypeValidFromDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid From"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionExternalPurpose" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Ext.Cond.Purp."
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionExternalPurposeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false"
+					sap:label="Condition Purp." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionCurrency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="REConditionTypeValidToDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Valid to"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionUnitPrice" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="6" sap:unicode="false"
+					sap:label="Unit Price" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionCalcFormula" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Calc. Formula"
+					sap:sortable="false" sap:filterable="false"/><Property Name="REConditionCalcFormulaName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false"
+					sap:label="CalcFormulaName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionNetAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false"
+					sap:unit="REConditionCurrency" sap:label="Net" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionItemTaxAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false"
+					sap:unit="REConditionCurrency" sap:label="Tax on sls/pur." sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="REConditionGrossAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false"
+					sap:unit="REConditionCurrency" sap:label="Gross" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="BusinessPartner"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="InvoiceTaxrate" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="3" sap:unicode="false" sap:label="Tax rate"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Iban" Type="Edm.String" Nullable="false" MaxLength="34" sap:unicode="false" sap:label="IBAN" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NewREConditionTypeValidToDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid to"
+					sap:creatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ContractTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="REContractType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false"/><Property Name="REContractType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Contract type"
+					sap:creatable="false" sap:updatable="false"/><Property Name="REContractTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Contract type" sap:creatable="false"
+					sap:updatable="false"/></EntityType>
+			<EntityType Name="NoticeData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/><PropertyRef Name="NoticeRule"/><PropertyRef Name="NoticeRuleRegulationNumber"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false"/><Property Name="NoticeRule" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Notice rule"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticeRuleRegulationNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sequence no."
+					sap:updatable="false" sap:filterable="false"/><Property Name="NoticeRuleType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Rule type"
+					sap:updatable="false" sap:filterable="false"/><Property Name="NoticeRuleTypeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Rule Type Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticeOptionBy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Giving Notice"/><Property Name="NoticeOptionByName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Notice Party"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticeRuleDescription" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="NoticeRule Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TermLimitInYears" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Term in Years"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TermLimitInMonths" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Term in months"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TermLimitInDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Term in Days"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticePeriodEndType" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice Per"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticePeriodEndTypeName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Notice Per"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NoticePeriodInMonths" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice-Months"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticePeriodInWeeks" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice - Weeks"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticePeriodInDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice Days"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeEarliestPossible" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:sortable="false"
+					sap:filterable="false"/><Property Name="NoticeReceiptToYears" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Receipt year"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeReceiptToMonths" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Received month"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeReceiptToDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Received On"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Notice Year"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeMonth" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice Month"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoticeDay" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notice Day" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="ObjectData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/><PropertyRef Name="ObjectType"/><PropertyRef Name="ObjectID"/><PropertyRef Name="ObjectValidTo"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false"/><Property Name="ObjectType" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="BusObjType"
+					sap:creatable="false" sap:updatable="false"/><Property Name="ObjectID" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="BusObjID" sap:creatable="false"
+					sap:updatable="false"/><Property Name="ObjectNumber" Type="Edm.String" Nullable="false" MaxLength="22" sap:unicode="false" sap:label="Object Number"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ObjectValidFrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid From" sap:updatable="false"/><Property Name="ContractSubjectText" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Contract Object"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ObjectValidTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Valid To"
+					sap:updatable="false"/><Property Name="AddressCityName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressStreetName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UsageType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Usage Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UsageTypeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="RU usage type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FloorLevel" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Floor" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FloorlLevelName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Floor (long)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FreeDefinedMeasurement" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="MeasType"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MeastypetextFreeDefinedMeasurementName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false"
+					sap:label="Med. Meas. Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FreeDefinedMeasurementValue" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="4" sap:unicode="false"
+					sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FreeDefinedMeasurementUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Units in"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="NewObjectValidTo" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid To" sap:creatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RenewalData" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/><PropertyRef Name="RenewalRuleType"/><PropertyRef Name="RenewalRuleNumber"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RealEstateContract" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Contract"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RenewalRuleType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Option/Autom."
+					sap:updatable="false"/><Property Name="RenewalRuleTypeName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Option/Autom."
+					sap:updatable="false" sap:sortable="false"/><Property Name="RenewalRuleNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sequence No."
+					sap:updatable="false" sap:filterable="false"/><Property Name="AutomaticRenewalType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Aut.Renew.Type"
+					sap:filterable="false"/><Property Name="AutomaticRenewalTypeName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="RenewTypeName"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NumberOfRenewals" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="No. of Renewals"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RenewalPeriodInYears" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Renewed Years"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RenewalPeriodInMonths" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Renewed Months"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RenewalPeiodInDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Renewed Days"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NotificationPeriodInYears" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notific. Years"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NotificationPeriodInMonths" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notif. Months"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NotificarionPeriodInWeeks" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notific. Weeks"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NotificationPeriodInDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Notific. Days"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BuPaRoleValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="BusinessPartnerRole"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPartnerRole" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="BP Role"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPartnerRoleName" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BusinessEntityValueList" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="BusinessEntity"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessEntity" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ObjectNumber" Type="Edm.String" Nullable="false" MaxLength="22" sap:unicode="false" sap:label="Object Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AdressStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BuildingValueList" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="BusinessEntity"/><PropertyRef Name="Building"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessEntity" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Building" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Building" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ObjectNumber" Type="Edm.String" Nullable="false" MaxLength="22" sap:unicode="false" sap:label="Object Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AdressStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PropertyValueList" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="BusinessEntity"/><PropertyRef Name="Property"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessEntity" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Property" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Property" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ObjectNumber" Type="Edm.String" Nullable="false" MaxLength="22" sap:unicode="false" sap:label="Object Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AdressStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RentalObjectValueList" sap:content-version="1">
+				<Key><PropertyRef Name="CompanyCode"/><PropertyRef Name="BusinessEntity"/><PropertyRef Name="RentalObject"/></Key><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessEntity" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RentalObject" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Rental Object"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ObjectNumber" Type="Edm.String" Nullable="false" MaxLength="22" sap:unicode="false" sap:label="Object Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RentalObjectText" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Rental Object Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AdressStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddressHouseNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ConditionCalcFormValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="REConditionCalcFormula"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionCalcFormula" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Calc. Formula"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REConditionCalcFormulaName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false"
+					sap:label="CalcFormulaName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ConditionExtValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="REConditionExternalPurpose"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="REConditionExternalPurpose" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Ext.Cond.Purp."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="REConditionExternalPurposeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Condition Purp."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ConditionTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="REConditionType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="REConditionType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Condition Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="REConditionTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Condition Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="FloorLevelValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="FloorLevel"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="FloorLevel" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Floor" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="FloorLevelName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Floor (long)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MeasurementTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="Meastype"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Meastype" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="MeasType" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Meastypetext" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Med. Meas. Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PartyGivingNoticeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="NoticeOptionBy"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="NoticeOptionBy" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Giving Notice"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="NoticeOptionByName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Notice Party" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="NoticeRuleTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="NoticeRuleType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="NoticeRuleType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Rule type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="NoticeRuleTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Rule Type Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ObjectUsageTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="UsageType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="UsageType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Usage Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="UsageTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="RU usage type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RenewalAutoTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="AutomaticRenewalType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="AutomaticRenewalType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Aut.Renew.Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="AutomaticRenewalTypeName" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="RenewTypeName"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RenewalRuleTypeValueList" sap:content-version="1">
+				<Key><PropertyRef Name="Language"/><PropertyRef Name="RenewalRuleType"/></Key><Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="RenewalRuleType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Option/Autom."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="RenewalRuleTypeName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Option/Autom." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="Objects" sap:content-version="1"><End Type="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" Multiplicity="1" Role="FromRole_Objects"/><End Type="RE_CN_EXTERNAL_ODATA_SRV.ObjectData" Multiplicity="*" Role="ToRole_Objects"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Objects"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Principal>
+					<Dependent Role="ToRole_Objects"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Renewal" sap:content-version="1"><End Type="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" Multiplicity="1" Role="FromRole_Renewal"/><End Type="RE_CN_EXTERNAL_ODATA_SRV.RenewalData" Multiplicity="*" Role="ToRole_Renewal"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Renewal"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Principal>
+					<Dependent Role="ToRole_Renewal"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Notice" sap:content-version="1"><End Type="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" Multiplicity="1" Role="FromRole_Notice"/><End Type="RE_CN_EXTERNAL_ODATA_SRV.NoticeData" Multiplicity="*" Role="ToRole_Notice"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Notice"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Principal>
+					<Dependent Role="ToRole_Notice"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Partner" sap:content-version="1"><End Type="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" Multiplicity="1" Role="FromRole_Partner"/><End Type="RE_CN_EXTERNAL_ODATA_SRV.PartnerData" Multiplicity="*" Role="ToRole_Partner"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Partner"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Principal>
+					<Dependent Role="ToRole_Partner"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Conditions" sap:content-version="1"><End Type="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" Multiplicity="1" Role="FromRole_Conditions"/><End Type="RE_CN_EXTERNAL_ODATA_SRV.ConditionData" Multiplicity="*" Role="ToRole_Conditions"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Conditions"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Principal>
+					<Dependent Role="ToRole_Conditions"><PropertyRef Name="CompanyCode"/><PropertyRef Name="RealEstateContract"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="RE_CN_EXTERNAL_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="HeaderDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.HeaderData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/>
+				<EntitySet Name="ContractTypeDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ContractTypeData" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="BuPaValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.BuPaValueList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:requires-filter="true" sap:content-version="1"/><EntitySet Name="NoticeRhythmTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.NoticeRhythmTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PartnerDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.PartnerData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/><EntitySet Name="CompanyCodeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.CompanyCodeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ConditionDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ConditionData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/><EntitySet Name="ContractTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ContractTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="NoticeDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.NoticeData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/><EntitySet Name="ObjectDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ObjectData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/><EntitySet Name="RenewalDataSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.RenewalData" sap:deletable="false" sap:pageable="false"
+				sap:content-version="1"/><EntitySet Name="BuPaRoleValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.BuPaRoleValueList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="BusinessEntityValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.BusinessEntityValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="BuildingValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.BuildingValueList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PropertyValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.PropertyValueList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RentalObjectValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.RentalObjectValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ConditionCalcFormValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ConditionCalcFormValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ConditionExtValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ConditionExtValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ConditionTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ConditionTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="FloorLevelValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.FloorLevelValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="MeasurementTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.MeasurementTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PartyGivingNoticeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.PartyGivingNoticeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="NoticeRuleTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.NoticeRuleTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ObjectUsageTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.ObjectUsageTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RenewalAutoTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.RenewalAutoTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RenewalRuleTypeValueListSet" EntityType="RE_CN_EXTERNAL_ODATA_SRV.RenewalRuleTypeValueList" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="PartnerSet" Association="RE_CN_EXTERNAL_ODATA_SRV.Partner" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HeaderDataSet" Role="FromRole_Partner"/><End EntitySet="PartnerDataSet" Role="ToRole_Partner"/></AssociationSet>
+				<AssociationSet Name="NoticeSet" Association="RE_CN_EXTERNAL_ODATA_SRV.Notice" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HeaderDataSet" Role="FromRole_Notice"/><End EntitySet="NoticeDataSet" Role="ToRole_Notice"/></AssociationSet>
+				<AssociationSet Name="RenewalSet" Association="RE_CN_EXTERNAL_ODATA_SRV.Renewal" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HeaderDataSet" Role="FromRole_Renewal"/><End EntitySet="RenewalDataSet" Role="ToRole_Renewal"/></AssociationSet>
+				<AssociationSet Name="ConditionsSet" Association="RE_CN_EXTERNAL_ODATA_SRV.Conditions" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HeaderDataSet" Role="FromRole_Conditions"/><End EntitySet="ConditionDataSet" Role="ToRole_Conditions"/></AssociationSet>
+				<AssociationSet Name="ObjectsSet" Association="RE_CN_EXTERNAL_ODATA_SRV.Objects" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HeaderDataSet" Role="FromRole_Objects"/><End EntitySet="ObjectDataSet" Role="ToRole_Objects"/></AssociationSet>
+			</EntityContainer>
+<!--			<Annotations Target="RE_CN_EXTERNAL_ODATA_SRV.HeaderData/CompanyCode"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="CompanyCode" />
+						<PropertyValue Property="CollectionPath" String="CompanyCode" />
+						<PropertyValue Property="SearchSupported" Bool="true" />
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty"
+										PropertyPath="CompanyCode" />
+									<PropertyValue Property="ValueListProperty"
+										String="BUKRS" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="DESCR" />
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="RE_CN_EXTERNAL_ODATA_SRV.HeaderData/RealEstateContract"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="RealEstateContract" />
+						<PropertyValue Property="CollectionPath" String="RealEstateContract" />
+						<PropertyValue Property="SearchSupported" Bool="true" />
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty"
+										PropertyPath="RealEstateContract" />
+									<PropertyValue Property="ValueListProperty"
+										String="RECNNR" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="DESCR" />
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>-->
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/RE_CN_EXTERNAL_ODATA_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/RE_CN_EXTERNAL_ODATA_SRV/$metadata"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

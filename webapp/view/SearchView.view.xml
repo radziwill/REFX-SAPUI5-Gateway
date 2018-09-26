@@ -1,0 +1,95 @@
+<mvc:View controllerName="recn.RECN.controller.SearchView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>searchview_title}">
+				<content>
+					<fb:FilterBar search="onSearch" showRestoreButton="true" showClearButton="true">
+						<fb:filterGroupItems>
+							<fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="A" label="Company code">
+								<fb:control>
+									<Input id="iCompanyCode" type="Text"/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="B" label="Contract">
+								<fb:control>
+									<Input id="iContract" type="Text"/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="C" label="Contract type">
+								<fb:control>
+									<Input id="iContractType" type="Text"/>
+								</fb:control>
+							</fb:FilterGroupItem>
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+					<Table id="idContractsTable" inset="false" items="{ path: '/HeaderDataSet', sorter: { path: 'CompanyCode' } }" growing="true"
+						growingThreshold="10">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="{i18n>searchview_contracts}" level="H2"/>
+									<ToolbarSpacer/>
+									<!--					<Input id="iContract" type="Text" change="onSelectChange"/>
+					<Input id="iContractType" type="Text" change="onSelectChange"/>-->
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>searchview_contract}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>searchview_contracttype}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>searchview_description}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="onPress">
+								<cells>
+									<ObjectIdentifier title="{RealEstateContract}" text="{CompanyCode}"/>
+									<Text text="{REContractType}"/>
+									<Text text="{REContractName}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<!--	<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="HeaderDataSet" persistencyKey="SmartFilter_Explored"
+		considerSelectionVariants="true">
+		<smartFilterBar:controlConfiguration>
+			<smartFilterBar:ControlConfiguration key="CompanyCode" filterType="single"/>
+			<smartFilterBar:ControlConfiguration key="RealEstateContract" filterType="single"/>
+		</smartFilterBar:controlConfiguration>
+	</smartFilterBar:SmartFilterBar>
+	<smartTable:SmartTable id="idContractsTable" tableType="ResponsiveTable" editable="false"
+		entitySet="HeaderDataSet" useVariantManagement="false" useTablePersonalisation="true" header="Contracts" showRowCount="true"
+		useExportToExcel="false" enableAutoBinding="true" initiallyVisibleFields="CompanyCode,RealEstateContract,REContractType,REContractName">
+		<Table>
+			<columns>
+				<Column id="idArrow" width="100px" hAlign="Right"></Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<core:Icon src="sap-icon://arrow-right"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</smartTable:SmartTable>-->
+					<!--	<List
+		headerText="Contracts"
+		items="{
+			path: 'contractModel>/HeaderDataSet'
+		}" >
+		<StandardListItem
+			title="{CompanyCode}"
+			counter="{RealEstateContract}"/>
+	</List>-->
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

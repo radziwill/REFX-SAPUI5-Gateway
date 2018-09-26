@@ -1,0 +1,179 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "recn.RECN",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZRE_BU_BUILDING_ODATA_SRV": {
+				"uri": "/sap/opu/odata/sap/ZRE_BU_BUILDING_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZRE_BU_BUILDING_ODATA_SRV/metadata.xml"
+				}
+			},
+			"RE_CN_EXTERNAL_ODATA_SRV": {
+				"uri": "/sap/opu/odata/sap/RE_CN_EXTERNAL_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/RE_CN_EXTERNAL_ODATA_SRV/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "recn.RECN.view.SearchView",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "recn.RECN.i18n.i18n"
+				}
+			},
+			"buildingsModel": {
+				"uri": "/sap/opu/odata/sap/ZRE_BU_BUILDING_ODATA_SRV/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": true,
+					"useBatch": true
+				},
+				"dataSource": "ZRE_BU_BUILDING_ODATA_SRV",
+				"preload": true
+			},
+			"contractModel": {
+				"uri": "/sap/opu/odata/sap/RE_CN_EXTERNAL_ODATA_SRV/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": true,
+					"useBatch": true
+				},
+				"dataSource": "RE_CN_EXTERNAL_ODATA_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "recn.RECN.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"clearControlAggregation": false,
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				}
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "TargetSearchView",
+				"target": [
+					"TargetSearchView"
+				]
+			}, {
+				"name": "TargetMainView",
+				"pattern": "TargetMainView/{objectId}",
+				"target": ["TargetMainView"]
+			}, {
+				"name": "TargetBuildingDetailView",
+				"pattern": "TargetBuildingDetailView/{objectId}",
+				"target": ["TargetBuildingDetailView"]
+			},
+			{
+				"name": "TargetBuildingsView",
+				"pattern": "TargetBuildingsView",
+				"target": ["TargetBuildingsView"]
+			}
+			],
+			"targets": {
+				"TargetSearchView": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"controlID": "searchView",
+					"viewName": "SearchView"
+				},
+				"TargetMainView": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"controlID": "mainView",
+					"viewName": "MainView"
+				},
+				"TargetBuildingDetailView": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"controlID": "buildingDetailView",
+					"viewName": "BuildingDetailView"
+				},
+					"TargetBuildingsView": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"controlID": "buildingView",
+					"viewName": "BuildingsView"
+				}
+			}
+		}
+	}
+}

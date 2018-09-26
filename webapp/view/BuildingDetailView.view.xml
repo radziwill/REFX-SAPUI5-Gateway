@@ -1,0 +1,99 @@
+<mvc:View controllerName="recn.RECN.controller.BuildingDetailView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page showHeader="true" title="{i18n>buildingdetail_title} {buildingsModel>Xgetxt}" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<Bar>
+						<contentLeft>
+							<Button icon="sap-icon://save" type="Accept" press="onSave" text="Save"/>
+							<Button icon="sap-icon://reset" type="Reject" press="onReset" text="Reset"/>
+						</contentLeft>
+					</Bar>
+					<Panel headerText="Main data" expandable="true" expanded="true">
+						<Label text="Company code"/>
+						<Input value="{buildingsModel>Bukrs}" editable="false" maxLength="4"/>
+						<Label text="Business entity"/>
+						<Input value="{buildingsModel>Swenr}" editable="false" maxLength="7"/>
+						<Label text="Building"/>
+						<Input value="{buildingsModel>Sgenr}" editable="false" maxLength="4"/>
+						<Label text="Name"/>
+						<Input value="{buildingsModel>Xgetxt}" maxLength="30" valueLiveUpdate="true"/>
+						<Label text="Start date"/>
+						<DatePicker value="{buildingsModel>Validfrom}" editable="true" displayFormat="long"/>
+						<Label text="End date"/>
+						<DatePicker value="{buildingsModel>Validto}" editable="true" displayFormat="long"/>
+					</Panel>
+					<Panel headerText="Measurements" expandable="true" expanded="false">
+						<Table id="idMeasurementsTable" inset="false" items="{ path: 'buildingsModel>Measurements' }" growing="true" growingThreshold="10">
+							<headerToolbar>
+								<Toolbar>
+									<content>
+										<Button icon="sap-icon://create" type="Accept" press="onCreateMeasurement" text="Create"/>
+										<Button icon="sap-icon://save" type="Accept" press="onSaveMeas" text="Save"/>
+									</content>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="{i18n>buildingdetailview_measurement}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_measvalue}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_measunit}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{buildingsModel>Meas}"/>
+										<Text text="{buildingsModel>Measvalue}"/>
+										<Text text="{buildingsModel>Measunit}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</Panel>
+					<Panel headerText="Partners" expandable="true" expanded="false">
+						<Table id="idPartnersTable" inset="false" items="{ path: 'buildingsModel>Partners' }" growing="true" growingThreshold="10">
+							<columns>
+								<Column>
+									<Text text="{i18n>buildingdetailview_partner}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_role}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_subrole}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_appl}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_validfrom}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>buildingdetailview_validto}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{buildingsModel>Partner}"/>
+										<Text text="{buildingsModel>Role}"/>
+										<Text text="{buildingsModel>Subrole}"/>
+										<Text text="{buildingsModel>Appl}"/>
+										<Text text="{buildingsModel>Validfrom}"/>
+										<Text text="{buildingsModel>Validto}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</Panel>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

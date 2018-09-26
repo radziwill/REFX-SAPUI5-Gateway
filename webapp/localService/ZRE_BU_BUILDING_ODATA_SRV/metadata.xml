@@ -1,0 +1,51 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZRE_BU_BUILDING_ODATA_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="BuildingData" sap:content-version="1">
+				<Key><PropertyRef Name="Bukrs"/><PropertyRef Name="Swenr"/><PropertyRef Name="Sgenr"/></Key><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Swenr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Sgenr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Building" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Identtype" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Object Type"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Identkey" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="Object ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Xgetxt" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Building Name" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Usgfunction" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Function" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Xmusgfunction" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Function Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Validfrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Obj. Valid From" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Validto" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Object Valid To" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Xstatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Xsyststatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Xuserstatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Intreno" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="Intreno" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Measurements" Relationship="ZRE_BU_BUILDING_ODATA_SRV.Asoc_Building_Measurements"
+					FromRole="FromRole_Asoc_Building_Measurements" ToRole="ToRole_Asoc_Building_Measurements"/></EntityType>
+			<EntityType Name="BuildingMeasurement" sap:content-version="1">
+				<Key><PropertyRef Name="Bukrs"/><PropertyRef Name="Swenr"/><PropertyRef Name="Sgenr"/><PropertyRef Name="Meas"/><PropertyRef Name="Validto"/><PropertyRef Name="Validfrom"/></Key><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Swenr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Business Entity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Sgenr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Building" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Meas" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="MeasType" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Validto" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date: Measurement Valid To"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Validfrom" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date: Measurement Valid From"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Measvalue" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="4" sap:unicode="false" sap:label="Amount"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Measvaluecmpl" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="4" sap:unicode="false" sap:label="Capacity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Measunit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Units in" sap:sortable="false"
+					sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Ismanuallyset" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="ManualOverwrite" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Ishierarchical" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Hierarchical" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Validfromisinherited" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Val-Frm Inher."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Validtoisinherited" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Valid-To Inher."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Iscalculateable" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Yes/No" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="Asoc_Building_Measurements" sap:content-version="1"><End Type="ZRE_BU_BUILDING_ODATA_SRV.BuildingData" Multiplicity="1" Role="FromRole_Asoc_Building_Measurements"/><End Type="ZRE_BU_BUILDING_ODATA_SRV.BuildingMeasurement" Multiplicity="*" Role="ToRole_Asoc_Building_Measurements"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Asoc_Building_Measurements"><PropertyRef Name="Bukrs"/><PropertyRef Name="Swenr"/><PropertyRef Name="Sgenr"/></Principal>
+					<Dependent Role="ToRole_Asoc_Building_Measurements"><PropertyRef Name="Bukrs"/><PropertyRef Name="Swenr"/><PropertyRef Name="Sgenr"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZRE_BU_BUILDING_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="BuildingDataSet" EntityType="ZRE_BU_BUILDING_ODATA_SRV.BuildingData" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="BuildingMeasurementSet" EntityType="ZRE_BU_BUILDING_ODATA_SRV.BuildingMeasurement" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="Asoc_Building_MeasurementsSet" Association="ZRE_BU_BUILDING_ODATA_SRV.Asoc_Building_Measurements"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="BuildingDataSet" Role="FromRole_Asoc_Building_Measurements"/><End EntitySet="BuildingMeasurementSet" Role="ToRole_Asoc_Building_Measurements"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZRE_BU_BUILDING_ODATA_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZRE_BU_BUILDING_ODATA_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

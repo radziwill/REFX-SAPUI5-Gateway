@@ -1,0 +1,50 @@
+<mvc:View controllerName="recn.RECN.controller.BuildingsView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<Table id="idObjectsTable" inset="false" items="{ path: 'contractModel>Objects' }" growing="true" growingThreshold="10">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="{i18n>objectsview_objects}" level="H2"/>
+									<ToolbarSpacer/>
+									<!--					<Input id="iContract" type="Text" change="onSelectChange"/>
+					<Input id="iContractType" type="Text" change="onSelectChange"/>-->
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="30px" vAlign="Middle" hAlign="Center"  >
+							</Column>
+							<Column>
+								<Text text="{i18n>objectsview_object}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>objectsview_contractsubjecttext}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>objectsview_objectvalidfrom}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>objectsview_objectvalidto}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="onPress">
+								<cells>
+									<core:Icon src="{= ${contractModel>ObjectType} === 'IB' ? 'sap-icon://home' : 'sap-icon//building' }"/>
+									<ObjectIdentifier title="{contractModel>ObjectType}" text="{contractModel>ObjectID}"/>
+									<Text text="{contractModel>ContractSubjectText}"/>
+									<Text text="{contractModel>ObjectValidFrom}"/>
+									<Text text="{contractModel>ObjectValidTo}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

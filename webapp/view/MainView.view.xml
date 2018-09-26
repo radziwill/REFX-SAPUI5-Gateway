@@ -1,0 +1,21 @@
+<mvc:View controllerName="recn.RECN.controller.MainView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>mainview_title} {contractModel>CompanyCode}/{contractModel>RealEstateContract}" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="handleNav">
+						<items>
+							<IconTabFilter text="{i18n>mainview_contract}">
+								<mvc:XMLView viewName="recn.RECN.view.ContractView"/>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>mainview_buildings}">
+								<mvc:XMLView viewName="recn.RECN.view.BuildingsView"/>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

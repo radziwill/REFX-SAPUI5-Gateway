@@ -1,0 +1,28 @@
+<mvc:View controllerName="recn.RECN.controller.ContractView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page showHeader="false">
+				<Panel>
+				<Label text="Company code"/>
+				<Input value="{contractModel>CompanyCode}" editable="false" maxLength="4"/>
+				
+				<Label text="Contract" labelFor="realestatecontract"/>
+				<Input value="{contractModel>RealEstateContract}" editable="false" maxLength="7"/>
+				
+				<Label text="Contract type" labelFor="recontracttype"/>
+				<Input value="{contractModel>REContractType}" editable="false" maxLength="4"/>
+				
+				<Label text="Name"/>
+				<Input value="{contractModel>REContractName}" maxLength="30" valueLiveUpdate="true"/>
+				
+				<Label text="Start date" labelFor="contractstartdate"/>
+				<DatePicker value="{contractModel>ContractStartDate}" editable="true"/>
+				
+				<Label text="End date" labelFor="contractenddate"/>
+				<DatePicker value="{contractModel>ContractEndDate}" editable="true"/>
+				</Panel>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
