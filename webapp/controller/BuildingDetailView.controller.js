@@ -42,7 +42,7 @@ sap.ui.define([
 			var that = this;
 			var oModel = this.getView().getModel("buildingsModel");
 			var oData = oModel.getData(sPath);
-			this.getView().getModel("buildingsModel").update(sPath, oData, {
+			this.getView().getModel("buildingsModel").submitChanges({
 				success: function () {
 					MessageToast.show("Sukces");
 				},
@@ -58,6 +58,8 @@ sap.ui.define([
 		},
 
 		onCreateMeasurement: function () {
+			var sPath = this.getView().getElementBinding("buildingsModel").getPath();
+			var oData = this.getView().getModel("buildingsModel").getData(sPath);
 			var that = this;
 			var dialog = new Dialog({
 				title: 'Create',
@@ -72,13 +74,25 @@ sap.ui.define([
 					}),
 					new DatePicker('Validto', {
 						width: '100%',
-						placeholder: 'Valid to',
-						format: 'medium'
+						value: {
+							type: 'sap.ui.model.type.Date',
+							formatOptions: {
+								pattern: 'yyyy-MM-dd',
+								strictParsing: true,
+								UTC: true
+							}
+						}
 					}),
 					new DatePicker('Validfrom', {
 						width: '100%',
-						placeholder: 'Valid from',
-						format: 'medium'
+						value: {
+							type: 'sap.ui.model.type.Date',
+							formatOptions: {
+								pattern: 'yyyy-MM-dd',
+								strictParsing: true,
+								UTC: true
+							}
+						}
 					}),
 					new Input('Measvalue', {
 						width: '100%',
@@ -88,21 +102,28 @@ sap.ui.define([
 						width: '100%',
 						placeholder: 'Measurement unit'
 					}),
-					new Button('Create',{
+					new Button('Create', {
 						text: 'Create',
-						press: function() {
-							that.getView().getModel("buildingsModel").createEntry("BuildingMeasurementSet",{
-								properties: { Bukrs:"D100",
-											Swenr:"1",
-											Sgenr:"1",
-											Meas:this.getParent().getContent()[1].getValue(),
-											Validto:this.getParent().getContent()[2].getValue(), 
-											Validfrom:this.getParent().getContent()[3].getValue(),
-											Measvalue:this.getParent().getContent()[4].getValue(),
-											Measunit:this.getParent().getContent()[5].getValue() }
+						press: function () {
+							that.getView().getModel("buildingsModel").create("/BuildingMeasurementSet", {
+								Bukrs: that.getView().Bukrs,
+								Swenr: that.getView().Swenr,
+								Sgenr: that.getView().Sgenr,
+								Meas: this.getParent().getContent()[1].getValue(),
+								Validto: this.getParent().getContent()[2].getDateValue(),
+								Validfrom: this.getParent().getContent()[3].getDateValue(),
+								Measvalue: this.getParent().getContent()[4].getValue(),
+								Measunit: this.getParent().getContent()[5].getValue()
+							}, {
+								success: function () {
+									MessageToast.show("Dodano");
+								},
+								error: function (e) {
+									that._showServiceError(e.response);
+								}
 							});
 							that.getView().getModel("buildingsModel").updateBindings();
-							that.destroy();
+							this.getParent().destroy();
 						}
 					})
 				],
@@ -126,6 +147,9 @@ sap.ui.define([
 		_onObjectMatched: function (e) {
 			var sObjectId = e.getParameter("arguments").objectId.toString();
 			var aObjectId = sObjectId.split(" ");
+			this.getView().Bukrs = aObjectId[0];
+			this.getView().Swenr = aObjectId[1];
+			this.getView().Sgenr = aObjectId[2];
 			var sObjectPath = this.getView().getModel("buildingsModel").createKey("BuildingDataSet", {
 				Bukrs: aObjectId[0],
 				Swenr: aObjectId[1],

@@ -3,95 +3,113 @@
 	<App id="idAppControl">
 		<pages>
 			<Page showHeader="true" title="{i18n>buildingdetail_title} {buildingsModel>Xgetxt}" showNavButton="true" navButtonPress="onNavBack">
+				<headerContent>
+					<Button icon="sap-icon://save" press="onSave" text="Save"/>
+					<Button icon="sap-icon://reset" press="onReset" text="Reset"/>
+				</headerContent>
 				<content>
-					<Bar>
-						<contentLeft>
-							<Button icon="sap-icon://save" type="Accept" press="onSave" text="Save"/>
-							<Button icon="sap-icon://reset" type="Reject" press="onReset" text="Reset"/>
-						</contentLeft>
-					</Bar>
-					<Panel headerText="Main data" expandable="true" expanded="true">
-						<Label text="Company code"/>
-						<Input value="{buildingsModel>Bukrs}" editable="false" maxLength="4"/>
-						<Label text="Business entity"/>
-						<Input value="{buildingsModel>Swenr}" editable="false" maxLength="7"/>
-						<Label text="Building"/>
-						<Input value="{buildingsModel>Sgenr}" editable="false" maxLength="4"/>
-						<Label text="Name"/>
-						<Input value="{buildingsModel>Xgetxt}" maxLength="30" valueLiveUpdate="true"/>
-						<Label text="Start date"/>
-						<DatePicker value="{buildingsModel>Validfrom}" editable="true" displayFormat="long"/>
-						<Label text="End date"/>
-						<DatePicker value="{buildingsModel>Validto}" editable="true" displayFormat="long"/>
-					</Panel>
-					<Panel headerText="Measurements" expandable="true" expanded="false">
-						<Table id="idMeasurementsTable" inset="false" items="{ path: 'buildingsModel>Measurements' }" growing="true" growingThreshold="10">
-							<headerToolbar>
-								<Toolbar>
-									<content>
-										<Button icon="sap-icon://create" type="Accept" press="onCreateMeasurement" text="Create"/>
-										<Button icon="sap-icon://save" type="Accept" press="onSaveMeas" text="Save"/>
-									</content>
-								</Toolbar>
-							</headerToolbar>
-							<columns>
-								<Column>
-									<Text text="{i18n>buildingdetailview_measurement}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_measvalue}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_measunit}"/>
-								</Column>
-							</columns>
-							<items>
-								<ColumnListItem>
-									<cells>
-										<Text text="{buildingsModel>Meas}"/>
-										<Text text="{buildingsModel>Measvalue}"/>
-										<Text text="{buildingsModel>Measunit}"/>
-									</cells>
-								</ColumnListItem>
-							</items>
-						</Table>
-					</Panel>
-					<Panel headerText="Partners" expandable="true" expanded="false">
-						<Table id="idPartnersTable" inset="false" items="{ path: 'buildingsModel>Partners' }" growing="true" growingThreshold="10">
-							<columns>
-								<Column>
-									<Text text="{i18n>buildingdetailview_partner}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_role}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_subrole}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_appl}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_validfrom}"/>
-								</Column>
-								<Column>
-									<Text text="{i18n>buildingdetailview_validto}"/>
-								</Column>
-							</columns>
-							<items>
-								<ColumnListItem>
-									<cells>
-										<Text text="{buildingsModel>Partner}"/>
-										<Text text="{buildingsModel>Role}"/>
-										<Text text="{buildingsModel>Subrole}"/>
-										<Text text="{buildingsModel>Appl}"/>
-										<Text text="{buildingsModel>Validfrom}"/>
-										<Text text="{buildingsModel>Validto}"/>
-									</cells>
-								</ColumnListItem>
-							</items>
-						</Table>
-					</Panel>
+					<ObjectHeader id="oh1" title="{i18n>buildingdetail_title} {buildingsModel>Xgetxt}" numberState="Success" backgroundDesign="Transparent"
+						icon="sap-icon://building">
+						<attributes>
+							<ObjectAttribute text="{buildingsModel>Bukrs}" title="Company code"/>
+							<ObjectAttribute text="{buildingsModel>Swenr}" title="Business entity"/>
+							<ObjectAttribute text="{buildingsModel>Sgenr}" title="Building"/>
+							<ObjectAttribute text="{buildingsModel>Xgetxt}" title="Name"/>
+							<ObjectAttribute text="{buildingsModel>Validfrom}" title="Valid from"/>
+							<ObjectAttribute text="{buildingsModel>Validto}" title="Valid to"/>
+						</attributes>
+					</ObjectHeader>
+					<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="handleNav">
+						<items>
+							<IconTabFilter text="{i18n>buildingdetail_title}" icon="sap-icon://building">
+								<Panel>
+									<Label text="Company code"/>
+									<Input value="{buildingsModel>Bukrs}" editable="false" maxLength="4"/>
+									<Label text="Business entity"/>
+									<Input value="{buildingsModel>Swenr}" editable="false" maxLength="7"/>
+									<Label text="Building"/>
+									<Input value="{buildingsModel>Sgenr}" editable="false" maxLength="4"/>
+									<Label text="Name"/>
+									<Input value="{buildingsModel>Xgetxt}" maxLength="30" valueLiveUpdate="true"/>
+									<Label text="Start date"/>
+									<DatePicker
+										value="{path: 'buildingsModel>Validfrom', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy-MM-dd', strictParsing: true , UTC: true}}"
+										editable="true" displayFormat="long"/>
+									<Label text="End date"/>
+									<DatePicker
+										value="{path: 'buildingsModel>Validto', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy-MM-dd', strictParsing: true , UTC: true}}"
+										editable="true" displayFormat="long"/>
+								</Panel>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>buildingdetailview_measurement}" icon="sap-icon://measure">
+								<Table id="idMeasurementsTable" inset="false" items="{ path: 'buildingsModel>Measurements' }" growing="true" growingThreshold="10">
+									<headerToolbar>
+										<Toolbar>
+											<content>
+												<Button icon="sap-icon://create" press="onCreateMeasurement" text="Add"/>
+											</content>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>buildingdetailview_measurement}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_measvalue}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_measunit}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{buildingsModel>Meas}"/>
+												<Input value="{buildingsModel>Measvalue}"/>
+												<Input value="{buildingsModel>Measunit}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>buildingdetailview_partner}" icon="sap-icon://company-view">
+								<Table id="idPartnersTable" inset="false" items="{ path: 'buildingsModel>Partners' }" growing="true" growingThreshold="10">
+									<columns>
+										<Column>
+											<Text text="{i18n>buildingdetailview_partner}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_role}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_subrole}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_appl}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_validfrom}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>buildingdetailview_validto}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{buildingsModel>Partner}"/>
+												<Text text="{buildingsModel>Role}"/>
+												<Text text="{buildingsModel>Subrole}"/>
+												<Text text="{buildingsModel>Appl}"/>
+												<Text text="{buildingsModel>Validfrom}"/>
+												<Text text="{buildingsModel>Validto}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
 				</content>
 			</Page>
 		</pages>

@@ -4,17 +4,7 @@
 		<pages>
 			<Page showHeader="false">
 				<content>
-					<Table id="idObjectsTable" inset="false" items="{ path: 'contractModel>Objects' }" growing="true" growingThreshold="10">
-						<headerToolbar>
-							<Toolbar>
-								<content>
-									<Title text="{i18n>objectsview_objects}" level="H2"/>
-									<ToolbarSpacer/>
-									<!--					<Input id="iContract" type="Text" change="onSelectChange"/>
-					<Input id="iContractType" type="Text" change="onSelectChange"/>-->
-								</content>
-							</Toolbar>
-						</headerToolbar>
+					<Table id="idObjectsTable" inset="false" items="{ path: 'contractModel>Objects' }" growing="true" growingThreshold="10" backgroundDesign="Transparent">
 						<columns>
 							<Column width="30px" vAlign="Middle" hAlign="Center"  >
 							</Column>
